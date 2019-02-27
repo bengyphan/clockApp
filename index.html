@@ -29,9 +29,22 @@
 
 <!-- start body element -->
 <body>
-	<div class='container-fluid' id='clock'>
+	<div class='container' id='clock'>
 	</div>
-	<div id="alarm"></div>
+	<button id="showBtn" class="btn btn-outline-dark" onclick="showAlarm()">Create Alarm</button>
+	<div id="alarm">
+		<div id="alarmOptions">
+			<h2>Set Alarm Time</h2>
+			<select name="hours" id="alarmHrs"></select>
+			<select name="minutes" id="alarmMins"></select>
+			<select name="period" id="alarmPeriod">
+				<option>AM</option>
+				<option>PM</option>
+			</select>
+			<button onclick="setAlarm()">Set Alarm</button>
+		</div>
+		<div id="alarmSet"></div>
+	</div>
 
 
 
@@ -43,6 +56,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <!-- End Bootstrap 4 JS -->
 
+	<script type="text/javascript" src="js/alarm.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 <!-- end body element -->
 </body>

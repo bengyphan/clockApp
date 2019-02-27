@@ -1,3 +1,10 @@
+var clock = document.getElementById("clock");
+var myH1 = document.createElement("h1");
+var myH3 = document.createElement("h3");
+var tglBtn = document.createElement('button');
+var alarm = document.createElement("button");
+var alarmOptions = document.getElementById("alarmOptions");
+
 function formatTime(i) {
 	if(i < 10) {
 		return "0" + i;
@@ -6,11 +13,27 @@ function formatTime(i) {
 	};
 };
 
-var clock = document.getElementById("clock");
-var myH1 = document.createElement("h1");
-var myH3 = document.createElement("h3");
-var tglBtn = document.createElement('button');
-var alarm = document.createElement("button");
+
+function showAlarm() {
+	var alarmEl= document.getElementById("alarm");
+	var showBtn = document.getElementById("showBtn");
+
+	alarmEl.classList.toggle("show");
+
+	if(alarmEl.classList.contains("show")){
+		showBtn.innerText = "Hide Alarm";
+		alarmEl.style = "display: block";
+		alarmSet.style = "margin-top: 50px";
+		clock.style.padding = "75px 30px 115px 30px"
+
+	} else {
+		showBtn.innerText = "Set Alarm";
+		alarmEl.style = "display: none";
+		clock.style.padding = "75px 30px"
+		alarmOptions.style = "display: block"
+	}
+
+}
 
 function setTime() {
 	var date = new Date();
@@ -33,11 +56,6 @@ function setTime() {
 	}
 
 
-	// style the clock 
-	$('#clock').css({'border': '5px solid #33D5E5', 'padding': '75px 30px', 'position' : 'fixed', "top" : '150px'})
-
-
-
 
 	// display calendar date
 	myH3.innerText = date.toDateString()
@@ -49,7 +67,7 @@ function setTime() {
 	// display the time
 	myH1.innerText = hour + ": " + min + ": " + second + " " + meridiam;
 	myH1.style.textAlign = "center";
-	myH1.style.fontSize = "xx-large";
+	myH1.style.fontSize = "50px";
 	myH1.style.color = "#33D5E5";
 	myH1.style.fontFamily = "'Iceland', cursive";
 	clock.appendChild(myH1);
@@ -60,21 +78,17 @@ function setTime() {
 	tglBtn.innerHTML = "<i class='fas fa-star-half-alt'></i>";
 	tglBtn.onclick = function() {
 							clock.classList.toggle('dark');
+							document.body.classList.toggle('dark');
 	};
-	tglBtn.setAttribute("style", "position: absolute; top: 10px; right: 10px");
 
-	// add a setalarm button 
-	alarm.name = "alarm";
-	alarm.className = "btn btn small btn-outline-dark";
-	alarm.innerText = "Set Alarm";
-	alarm.onclick = function() {
-
-
-	}
-
+	tglBtn.setAttribute("style", "float: right; position: relative; top: -120px");
+	
 	clock.appendChild(tglBtn);
 
-	setTimeout(setTime, 1000)
+	setTimeout(setTime, 1000);
 }
+
+// style the clock 
+$('#clock').css({'border': '5px solid #33D5E5', 'padding': '75px 30px'})
 
 setTime();
