@@ -81,7 +81,7 @@ function setTime() {
 							document.body.classList.toggle('dark');
 	};
 
-	tglBtn.setAttribute("style", "float: right; position: relative; top: -120px");
+	tglBtn.setAttribute("style", "float: right; position: relative; top: -175px");
 	
 	clock.appendChild(tglBtn);
 
